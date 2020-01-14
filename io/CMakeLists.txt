@@ -1,0 +1,1 @@
+lpmqd_append_sources(${CMAKE_CURRENT_SOURCE_DIR}/io.cpp)
