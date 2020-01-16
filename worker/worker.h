@@ -10,6 +10,7 @@ class Mem;
 
 typedef enum
 {
+    CLASS_INFO,
     CLASS_PS,
     CLASS_MEM,
     CLASS_IO,
@@ -18,7 +19,7 @@ typedef enum
 struct Header
 {
     std::uint8_t        ck;
-    cmd_class           cmd;
+    std::uint8_t        cmd;
     std::uint16_t       payload_len;
 }__attribute__((__packed__));
 

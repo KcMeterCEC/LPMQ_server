@@ -53,12 +53,18 @@ bool Rb::write(const std::uint8_t *wbuf, std::uint32_t size)
     {
         buf[i] = wbuf[first_cp + i];
     }
+
+    return true;
 }
 bool Rb::read(std::uint8_t *rbuf, std::uint32_t size)
 {
-    if((rbuf == nullptr) || (!size))
+    if(rbuf == nullptr)
     {
         return false;
+    }
+    if(!size)
+    {
+        return true;
     }
 
     uint32_t full_size = buf.size() - empty_size;
@@ -85,7 +91,6 @@ bool Rb::read(std::uint8_t *rbuf, std::uint32_t size)
     {
         read_index += size;
     }
-
     for(int i = 0; i < first_cp; ++i)
     {
         rbuf[i] = buf[start_index + i];
@@ -95,4 +100,6 @@ bool Rb::read(std::uint8_t *rbuf, std::uint32_t size)
     {
         rbuf[first_cp + i] = buf[i];
     }
+
+    return true;
 }

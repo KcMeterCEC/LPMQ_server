@@ -120,6 +120,10 @@ void Worker::exec(void)
                         status = GET_HEAD;
                         switch(head.cmd)
                         {
+                            case CLASS_INFO:
+                            {
+                                LOG_DBG("dealwith sysinfo command.");
+                            }break;
                             case CLASS_PS:
                             {
                                 head.payload_len = ps->exec(recv_tmp, sizeof(recv_tmp));
