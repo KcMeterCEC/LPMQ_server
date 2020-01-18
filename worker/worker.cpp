@@ -3,6 +3,7 @@
 #include <cassert>
 #include <errno.h>
 #include <unistd.h>
+#include <cstdio>
 
 #include "worker.h"
 #include "rb.h"
@@ -123,18 +124,19 @@ void Worker::exec(void)
                             case CLASS_INFO:
                             {
                                 LOG_DBG("dealwith sysinfo command.");
+                                head.payload_len = sys_info(recv_tmp, sizeof(recv_tmp), head.status);
                             }break;
                             case CLASS_PS:
                             {
-                                head.payload_len = ps->exec(recv_tmp, sizeof(recv_tmp));
+                                head.payload_len = ps->exec(recv_tmp, sizeof(recv_tmp), head.status);
                             }break;
                             case CLASS_MEM:
                             {
-                                head.payload_len = mem->exec(recv_tmp, sizeof(recv_tmp));
+                                head.payload_len = mem->exec(recv_tmp, sizeof(recv_tmp), head.status);
                             }break;
                             case CLASS_IO:
                             {
-                                head.payload_len = io->exec(recv_tmp, sizeof(recv_tmp));
+                                head.payload_len = io->exec(recv_tmp, sizeof(recv_tmp), head.status);
                             }break;
                             default:
                             {
@@ -171,4 +173,22 @@ void Worker::exec(void)
     }
 
     close_client();
+}
+std::uint32_t Worker::sys_info(std::uint8_t *buf, std::uint32_t maximum_len, std::int16_t &status)
+{
+    FILE *fp = std::fopen(ps->cpuinfo_path_get(), "r");
+
+    if(!fp)
+    {
+        LOG_ERR("can't open file " << ps->cpuinfo_path_get());
+        status = -LPMQ_NO_FILE;
+
+        return 0;
+    }
+    std::uint32_t r_size = std::fread(buf, 1, maximum_len, fp);
+    std::fclose(fp);
+
+    status = LPMQ_OK;
+
+    return r_size;
 }
