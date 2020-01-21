@@ -41,7 +41,7 @@ public:
     void exec(void);
 private:
     int             client_fd = 0;
-    std::uint8_t    recv_tmp[8192];
+    std::uint8_t    recv_tmp[16384];
     Header          head;
     Rb              *rd_buf = nullptr;
 
