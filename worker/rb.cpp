@@ -21,7 +21,7 @@ bool Rb::write(const std::uint8_t *wbuf, std::uint32_t size)
 
     if(empty_size < size)
     {
-        LOG_ERR("ring buffer hasn't enough space!");
+        // LOG_ERR("ring buffer hasn't enough space!");
 
         return false;
     }
@@ -71,7 +71,7 @@ bool Rb::read(std::uint8_t *rbuf, std::uint32_t size)
 
     if(full_size < size)
     {
-        LOG_DBG("ring buffer hasn't enough data!");
+        // LOG_DBG("ring buffer hasn't enough data!");
         return false;
     }
 

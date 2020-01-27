@@ -2,6 +2,11 @@
 #define __MEM_H__
 #include <cstdint>
 
+typedef enum
+{
+    MEM_STAT,
+}mem_cmd;
+
 class Mem
 {
 public:    

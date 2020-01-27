@@ -1,6 +1,8 @@
 #ifndef __WORKER_H__
 #define __WORKER_H__
-#include <cstdint>
+
+#include "basic.h"
+
 class Rb;
 class Process;
 class Io;
@@ -16,12 +18,6 @@ typedef enum
     CLASS_IO,
 }cmd_class;
 
-typedef enum
-{
-    LPMQ_OK,
-    LPMQ_NO_FILE,
-}cmd_status;
-
 struct Header
 {
     std::uint8_t        ck;
@@ -30,7 +26,7 @@ struct Header
     std::uint16_t       payload_len;
 };
 
-class Worker
+class Worker : public Basic
 {
 public:
     Worker() = default;
