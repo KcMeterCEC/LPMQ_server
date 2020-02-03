@@ -40,4 +40,13 @@ list(APPEND CUR_SOURCE
 
 add_executable(${PROJECT_NAME} ${CUR_SOURCE})
 target_compile_options(${PROJECT_NAME} PRIVATE -std=c++11)
-target_link_libraries(${PROJECT_NAME} -pthread) 
+
+if(CMAKE_CROSSCOMPILING AND STATIC_LINK)
+    message(STATUS "static link is used for crosscompile mode.")
+    target_link_libraries(${PROJECT_NAME} PUBLIC -pthread "-static")
+else(CMAKE_CROSSCOMPILING AND STATIC_LINK)
+    target_link_libraries(${PROJECT_NAME} -pthread)
+endif(CMAKE_CROSSCOMPILING AND STATIC_LINK)
+
+
+
