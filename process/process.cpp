@@ -9,14 +9,12 @@ Process::~Process()
 }
 std::uint32_t Process::exec(std::uint8_t *buf, std::uint32_t maximum_len, std::int16_t &status)
 {
-    LOG_DBG("executing process command...");
     std::uint32_t len = 0;
     switch(buf[0])
     {
         case CPU_STAT:
         {
             len = exec_cpustat(buf, maximum_len, status);
-            LOG_DBG("read cpu stat from proc, return len is " << len);
         }break;
         default:
         {
