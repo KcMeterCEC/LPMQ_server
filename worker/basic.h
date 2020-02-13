@@ -7,6 +7,7 @@ typedef enum
 {
     LPMQ_OK,
     LPMQ_NO_FILE,
+    LPMQ_FILE_READ_ERR,
 }cmd_status;
 
 class Basic

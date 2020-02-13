@@ -3,7 +3,6 @@
 #include <cassert>
 #include <errno.h>
 #include <unistd.h>
-#include <cstdio>
 
 #include "worker.h"
 #include "rb.h"
