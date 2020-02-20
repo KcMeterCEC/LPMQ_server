@@ -24,7 +24,7 @@ struct Header
     std::uint8_t        cmd;
     std::int16_t        status;
     std::uint16_t       payload_len;
-};
+}__attribute__((__packed__));
 
 class Worker : public Basic
 {
