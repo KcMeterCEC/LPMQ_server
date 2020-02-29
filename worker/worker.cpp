@@ -118,24 +118,26 @@ void Worker::exec(void)
                     if(rd_buf->read(recv_tmp, head.payload_len))
                     {
                         status = GET_HEAD;
+
+                        std::int16_t ret_status = LPMQ_OK;
                         switch(head.cmd)
                         {
                             case CLASS_INFO:
                             {
                                 LOG_DBG("dealwith sysinfo command.");
-                                head.payload_len = sys_info(recv_tmp, sizeof(recv_tmp), head.status);
+                                head.payload_len = sys_info(recv_tmp, sizeof(recv_tmp), ret_status);
                             }break;
                             case CLASS_PS:
                             {
-                                head.payload_len = ps->exec(recv_tmp, sizeof(recv_tmp), head.status);
+                                head.payload_len = ps->exec(recv_tmp, sizeof(recv_tmp), ret_status);
                             }break;
                             case CLASS_MEM:
                             {
-                                head.payload_len = mem->exec(recv_tmp, sizeof(recv_tmp), head.status);
+                                head.payload_len = mem->exec(recv_tmp, sizeof(recv_tmp), ret_status);
                             }break;
                             case CLASS_IO:
                             {
-                                head.payload_len = io->exec(recv_tmp, sizeof(recv_tmp), head.status);
+                                head.payload_len = io->exec(recv_tmp, sizeof(recv_tmp), ret_status);
                             }break;
                             default:
                             {
@@ -143,6 +145,7 @@ void Worker::exec(void)
                                 assert(0);
                             }break;
                         }
+                        head.status = ret_status;
 
                         if(!send_result())
                         {
