@@ -1,6 +1,6 @@
 #ifndef __IO_H__
 #define __IO_H__
-#include <cstdint>
+#include "../worker/basic.h"
 
 class Io
 {
@@ -9,7 +9,7 @@ public:
 
     ~Io();
 
-    std::uint32_t exec(std::uint8_t *buf, std::uint32_t maximum_len, std::int16_t &status);
+    uint32_t exec(uint8_t *buf, uint32_t maximum_len, int16_t &status);
 private:    
 
 };

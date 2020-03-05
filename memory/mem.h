@@ -16,11 +16,11 @@ public:
 
     ~Mem();
 
-    std::uint32_t exec(std::uint8_t *buf, std::uint32_t maximum_len, std::int16_t &status);
+    uint32_t exec(uint8_t *buf, uint32_t maximum_len, int16_t &status);
 private:    
     const char *path_memstat = "/proc/meminfo";
 
-    std::uint32_t exec_memstat(std::uint8_t *buf, std::uint32_t maximum_len, std::int16_t &status);
+    uint32_t exec_memstat(uint8_t *buf, uint32_t maximum_len, int16_t &status);
 };
 #endif
 

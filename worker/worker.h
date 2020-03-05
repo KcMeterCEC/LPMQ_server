@@ -20,10 +20,10 @@ typedef enum
 
 struct Header
 {
-    std::uint8_t        ck;
-    std::uint8_t        cmd;
-    std::int16_t        status;
-    std::uint16_t       payload_len;
+    uint8_t        ck;
+    uint8_t        cmd;
+    int16_t        status;
+    uint16_t       payload_len;
 }__attribute__((__packed__));
 
 class Worker : public Basic
@@ -37,7 +37,7 @@ public:
     void exec(void);
 private:
     int             client_fd = 0;
-    std::uint8_t    recv_tmp[16384];
+    uint8_t    recv_tmp[16384];
     Header          head;
     Rb              *rd_buf = nullptr;
 
@@ -48,6 +48,6 @@ private:
     void close_client(void);
     bool send_result(void);
 
-    std::uint32_t sys_info(std::uint8_t *buf, std::uint32_t maximum_len, std::int16_t &status);
+    uint32_t sys_info(uint8_t *buf, uint32_t maximum_len, int16_t &status);
 };
 #endif

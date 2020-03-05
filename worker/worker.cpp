@@ -119,7 +119,7 @@ void Worker::exec(void)
                     {
                         status = GET_HEAD;
 
-                        std::int16_t ret_status = LPMQ_OK;
+                        int16_t ret_status = LPMQ_OK;
                         switch(head.cmd)
                         {
                             case CLASS_INFO:
@@ -176,7 +176,7 @@ void Worker::exec(void)
 
     close_client();
 }
-std::uint32_t Worker::sys_info(std::uint8_t *buf, std::uint32_t maximum_len, std::int16_t &status)
+uint32_t Worker::sys_info(uint8_t *buf, uint32_t maximum_len, int16_t &status)
 {
     return file_read(ps->cpuinfo_path_get(), buf, maximum_len, status);
 }

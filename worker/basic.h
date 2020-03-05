@@ -3,6 +3,15 @@
 
 #include <cstdint>
 
+using std::uint8_t;
+using std::int8_t;
+using std::uint16_t;
+using std::int16_t;
+using std::uint32_t;
+using std::int32_t;
+using std::uint64_t;
+using std::int64_t;
+
 typedef enum
 {
     LPMQ_OK,
@@ -17,7 +26,7 @@ public:
 
     ~Basic();
 protected:
-    std::uint32_t file_read(const char *path, std::uint8_t *buf, std::uint32_t maximum_len, std::int16_t &status);
+    uint32_t file_read(const char *path, uint8_t *buf, uint32_t maximum_len, int16_t &status);
 private:
     
 };

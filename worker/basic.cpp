@@ -7,9 +7,9 @@ Basic::~Basic()
 
 }
 
-std::uint32_t Basic::file_read(const char *path, std::uint8_t *buf, std::uint32_t maximum_len, std::int16_t &status)
+uint32_t Basic::file_read(const char *path, uint8_t *buf, uint32_t maximum_len, int16_t &status)
 {
-    std::uint32_t r_size = 0;
+    uint32_t r_size = 0;
 
     std::ifstream file(path);
     if(file)
