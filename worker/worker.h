@@ -37,7 +37,7 @@ public:
     void exec(void);
 private:
     int             client_fd = 0;
-    uint8_t    recv_tmp[16384];
+    uint8_t         recv_tmp[40960];
     Header          head;
     Rb              *rd_buf = nullptr;
 

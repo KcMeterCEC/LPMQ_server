@@ -40,51 +40,50 @@ struct TaskFault
     uint32_t cmajflt;
 }__attribute__((__packed__));
 struct TaskTime
-{
+{ 
     uint32_t utime;
     uint32_t stime;
-    uint32_t cutime;
-    uint32_t cstime;
+    int32_t  cutime;
+    int32_t  cstime;
     uint64_t starttime;
     uint32_t guest_time;
-    uint32_t cguest_time;
-
+    int32_t  cguest_time;  
+    int64_t  ticket;
 }__attribute__((__packed__));
 struct TaskMem
 {
     uint32_t vsize;
-    uint32_t rss;
+    int32_t  rss;
     uint32_t start_data;
     uint32_t end_data;
     uint32_t start_brk;
     uint32_t arg_start;
     uint32_t arg_end;
     uint32_t env_start;
-    uint32_t env_end;    
+    uint32_t env_end;
 }__attribute__((__packed__));
 struct TaskPolicy
 {
-    uint32_t processor;
+    int32_t  processor;
     uint32_t rt_priority;
     uint32_t policy;
-    int32_t   priority;
-    int32_t   nice;
-    uint32_t threads;
+    int32_t  priority;
+    int32_t  nice;
+    int32_t  threads;
 }__attribute__((__packed__));
 struct TaskStat
 {
     char state;
     int32_t  tty_nr;
     uint32_t flags;
-    uint32_t exit_code;
+    int32_t  exit_code;
     uint32_t wchan;
-    uint32_t exit_signal;
-    uint64_t delayacct_blkio_ticks;    
+    uint32_t exit_signal;   
+    uint64_t delayacct_blkio_ticks; 
 }__attribute__((__packed__));
 struct TaskOverview
 {
     char                name[50];
-    float               cpusage;
     struct TaskId       id;
     struct TaskFault    fault;
     struct TaskTime     time;
@@ -107,8 +106,10 @@ private:
     const char *path_proc = "/proc";
     const char *path_cpuinfo = "/proc/cpuinfo";
     const char *path_cpustat = "/proc/stat";
-    uint32_t page_size;
+    char    file_buf[4096];
+    uint32_t page_size_in_kb;
 
+    bool task_analyze(const struct dirent &entry, struct TaskOverview &task, int16_t &status);    
     uint32_t exec_cpustat(uint8_t *buf, uint32_t maximum_len, int16_t &status);
     uint32_t exec_tasklist(uint8_t *buf, uint32_t maximum_len, int16_t &status);
 };
