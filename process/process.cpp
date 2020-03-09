@@ -80,7 +80,7 @@ uint32_t Process::exec_tasklist(uint8_t *buf, uint32_t maximum_len, int16_t &sta
             actually_task_num += task_analyze(*namelist[entry_number], task_list[actually_task_num], status);
             if(actually_task_num >= maximum_task)
             {
-                LOG_ERR("Need more memory to save task informaton!");
+                // LOG_ERR("Need more memory to save task informaton!");
                 actually_task_num -= 1;
             }
 
@@ -90,11 +90,6 @@ uint32_t Process::exec_tasklist(uint8_t *buf, uint32_t maximum_len, int16_t &sta
 
         //now,we need sort
         std::qsort(task_list, actually_task_num, sizeof(struct TaskOverview), mem_sort);
-
-        for(int i = 0; i < actually_task_num; ++i)
-        {
-            LOG_INFO("id " << task_list[i].id.pid << " rss " << task_list[i].mem.rss);
-        }
 
         if(actually_task_num > head->number)
         {
