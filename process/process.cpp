@@ -61,8 +61,6 @@ uint32_t Process::exec_tasklist(uint8_t *buf, uint32_t maximum_len, int16_t &sta
     uint32_t len = 0;
     struct TaskListHeader *head = (struct TaskListHeader *)(buf);
 
-    LOG_INFO("focus: " << head->focus << "number " << head->number);
-
     uint32_t maximum_task = (maximum_len - sizeof(struct TaskListHeader)) / sizeof(struct TaskOverview);
     if(head->number > maximum_task)
     {
