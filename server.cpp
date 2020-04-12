@@ -48,7 +48,7 @@ Server::~Server()
 {
     close(server_fd);
 }
-bool Server::exec(void)
+bool Server::exec(void) const
 {
     int client_fd = 0;
 

@@ -9,7 +9,7 @@ public:
 
     ~Server();
 
-    bool exec(void);
+    bool exec(void) const;
 private:
     std::uint16_t   port = 0;
     int             server_fd = 0;
