@@ -26,7 +26,7 @@ public:
 
     virtual ~Basic();
 protected:
-    uint32_t file_read(const char *path, uint8_t *buf, uint32_t maximum_len, int16_t &status);
+    uint32_t file_read(const char *path, uint8_t *buf, uint32_t maximum_len, int16_t &status) const;
 private:
     
 };

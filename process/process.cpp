@@ -52,7 +52,7 @@ const char * Process::cpuinfo_path_get(void)
 {
     return path_cpuinfo;
 }
-uint32_t Process::exec_cpustat(uint8_t *buf, uint32_t maximum_len, int16_t &status)
+uint32_t Process::exec_cpustat(uint8_t *buf, uint32_t maximum_len, int16_t &status) const
 {
     return file_read(path_cpustat, buf, maximum_len, status);
 }

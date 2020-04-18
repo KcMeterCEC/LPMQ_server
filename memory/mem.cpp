@@ -5,7 +5,7 @@ Mem::~Mem()
 {
     
 }
-uint32_t Mem::exec(uint8_t *buf, uint32_t maximum_len, int16_t &status)
+uint32_t Mem::exec(uint8_t *buf, uint32_t maximum_len, int16_t &status) const
 {
     uint32_t len = 0;
     switch(buf[0])
@@ -22,7 +22,7 @@ uint32_t Mem::exec(uint8_t *buf, uint32_t maximum_len, int16_t &status)
 
     return len ? len + 1 : 0;
 }
-uint32_t Mem::exec_memstat(uint8_t *buf, uint32_t maximum_len, int16_t &status)
+uint32_t Mem::exec_memstat(uint8_t *buf, uint32_t maximum_len, int16_t &status) const
 {
     return file_read(path_memstat, buf, maximum_len, status);
 }

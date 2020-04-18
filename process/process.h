@@ -110,7 +110,7 @@ private:
     uint32_t page_size_in_kb = 4;
 
     bool task_analyze(const struct dirent &entry, struct TaskOverview &task, int16_t &status);    
-    uint32_t exec_cpustat(uint8_t *buf, uint32_t maximum_len, int16_t &status);
+    uint32_t exec_cpustat(uint8_t *buf, uint32_t maximum_len, int16_t &status) const;
     uint32_t exec_tasklist(uint8_t *buf, uint32_t maximum_len, int16_t &status);
 };
 #endif

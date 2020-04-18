@@ -9,7 +9,7 @@ public:
 
     ~Io();
 
-    uint32_t exec(uint8_t *buf, uint32_t maximum_len, int16_t &status);
+    uint32_t exec(uint8_t *buf, uint32_t maximum_len, int16_t &status) const;
 private:    
 
 };
