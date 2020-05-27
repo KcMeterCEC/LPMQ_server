@@ -106,7 +106,7 @@ private:
     const char *path_proc = "/proc";
     const char *path_cpuinfo = "/proc/cpuinfo";
     const char *path_cpustat = "/proc/stat";
-    char    file_buf[4096] = "\0";
+    char    file_buf[4096] = {0};
     uint32_t page_size_in_kb = 4;
 
     bool task_analyze(const struct dirent &entry, struct TaskOverview &task, int16_t &status);    
