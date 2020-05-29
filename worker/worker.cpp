@@ -51,7 +51,7 @@ bool Worker::send_result(void)
         else
         {
             LOG_ERR("send data to client failed!");
-            assert(0);
+            return false;
         }
     }
     if(head.payload_len)
@@ -68,7 +68,7 @@ bool Worker::send_result(void)
             else
             {
                 LOG_ERR("send data to client failed!");
-                assert(0);
+                return false;
             }
         }
     }
@@ -149,7 +149,7 @@ void Worker::exec(void)
 
                         if(!send_result())
                         {
-                            return;
+                            goto clear_client;
                         }
                     }
                     else
@@ -173,7 +173,7 @@ void Worker::exec(void)
             }
         }
     }
-
+clear_client:
     close_client();
 }
 uint32_t Worker::sys_info(uint8_t *buf, uint32_t maximum_len, int16_t &status)
