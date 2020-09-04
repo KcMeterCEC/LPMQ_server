@@ -36,7 +36,7 @@ Make sure the path of your compiler is right.
 > 
 > make
 
-If your target don't have c++ standard library,you must compile it with static link.
+If your target didn't have c++ standard library,you should compile it with static link.
 - static link
 > mkdir build && cd build
 > 

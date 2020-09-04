@@ -68,6 +68,7 @@ bool Server::exec(void) const
              << " " << ntohs(client_addr.sin_port));
 
         thread *wt = new thread(worker, client_fd);
+        wt->detach();
     }
 
     return false;
