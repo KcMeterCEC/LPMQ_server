@@ -16,7 +16,7 @@ uint32_t Mem::exec(uint8_t *buf, uint32_t maximum_len, int16_t &status) const
         }break;
         default:
         {
-            LOG_ERR("unknown PS command!");
+            LOG_ERR("unknown MEM command!");
         }break;
     }
 
